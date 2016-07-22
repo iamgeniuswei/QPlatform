@@ -6,6 +6,7 @@
 #include "qperrorinfoqueue.h"
 #include "qperrorinfo.h"
 #include <QDebug>
+#include <QtDebug>
 
 int main(int argc, char *argv[])
 {
@@ -74,9 +75,6 @@ int main(int argc, char *argv[])
     if(info)
         qDebug() << info->errorNo() << info->errorMsg();
     qDebug() << queue->getErrorCount();
-
-
-
 
     return a.exec();
 }

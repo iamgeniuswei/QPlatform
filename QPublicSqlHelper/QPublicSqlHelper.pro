@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += sql
+QT       += core sql
 
 
 TARGET = QPublicSqlHelper
@@ -40,7 +40,8 @@ HEADERS += sqlhelper.h\
     qpquerythread.h \
     qpnonquerythread.h \
     qpquerymodel.h \
-    qpdatamodel.h
+    qpdatamodel.h \
+    private/qpsqlconnection_p.h
 
 unix {
     target.path = /usr/lib

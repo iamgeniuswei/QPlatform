@@ -32,7 +32,7 @@ int QPSqlCommand::execNoQuerySQL(const QString &sql, const QString &connName)
         }
         else
         {
-            QSqlDatabase db = QPSqlConnection::getDBbyName(connName);
+            QSqlDatabase db = QPSqlConnection::getNameDB(connName);
             QSqlQuery query(db);
             if(query.exec(sql))
             {
@@ -76,7 +76,7 @@ bool QPSqlCommand::queryModel(QPQueryModel *model, const QString &sql, const QSt
     {
         if(!connName.isEmpty())
         {
-            QSqlDatabase db = QPSqlConnection::getDBbyName(connName);
+            QSqlDatabase db = QPSqlConnection::getNameDB(connName);
             model->setQuery(sql, db);
             if(model->lastError().isValid())
             {
@@ -163,7 +163,7 @@ int QPSqlCommand::queryCount(const QString &tableName, const QString &condition,
     }
     else
     {
-        QSqlDatabase db = QPSqlConnection::getDBbyName(connName);
+        QSqlDatabase db = QPSqlConnection::getNameDB(connName);
         QSqlQuery query(db);
         if(query.exec(sql))
         {

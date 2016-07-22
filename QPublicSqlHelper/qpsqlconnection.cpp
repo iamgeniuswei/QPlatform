@@ -1,19 +1,51 @@
 #include "qpsqlconnection.h"
+#include "private/qpsqlconnection_p.h"
 #include <QString>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include "sqlerror.h"
-QPSqlConnection::QPSqlConnection()
+QPSqlConnection *QPSqlConnection::_instance = nullptr;
+QPSqlConnection ::GarbageCollection QPSqlConnection::gc;
+QMutex QPSqlConnection::mutex;
+
+
+
+QPSqlConnection::QPSqlConnection():d_ptr(new QPSqlConnectionPrivate(this))
 {
 
 }
 
 QPSqlConnection::~QPSqlConnection()
 {
-
+    delete d_ptr;
+    d_ptr = nullptr;
 }
 
-bool QPSqlConnection::ConnectionToDBByDefault(const QString &driver, const QString &hostName, const int port, const QString &databaseName, const QString &userName, const QString &password)
+QPSqlConnection *QPSqlConnection::getInstance()
+{
+    if(_instance == nullptr)
+    {
+        mutex.lock();
+        if(_instance == nullptr)
+            _instance = new (std::nothrow) QPSqlConnection;
+        mutex.unlock();
+    }
+    return _instance;
+}
+
+void QPSqlConnection::initializeConnection(const QString &driver, const QString &hostName, int port, const QString &dbName, const QString &userName, const QString &password, const QString &connName)
+{
+    Q_D(QPSqlConnection);
+    d->_driver = driver;
+    d->_hostName = hostName;
+    d->_port = port;
+    d->_dbName = dbName;
+    d->_userName = userName;
+    d->_password = password;
+    d->_connName = connName;
+}
+
+bool QPSqlConnection::connectToDefaultDB(const QString &driver, const QString &hostName, const int port, const QString &databaseName, const QString &userName, const QString &password)
 {
     QSqlDatabase db = QSqlDatabase::addDatabase(driver);
     db.setHostName(hostName);
@@ -26,16 +58,16 @@ bool QPSqlConnection::ConnectionToDBByDefault(const QString &driver, const QStri
     else
     {
 
-        QPErrorInfo info;
-        info.setErrorNo(SqlError::errNo_ConneciontError);
-        info.setErrorMsg(db.lastError().text());
+        QPErrorInfo *info;
+        info->setErrorNo(SqlError::errNo_ConneciontError);
+        info->setErrorMsg(db.lastError().text());
         QPErrorInfoQueue *queue = QPErrorInfoQueue::getInstance();
         queue->addErrorInfo(info);
         return false;
     }
 }
 
-bool QPSqlConnection::ConnectionToDBByName(const QString &driver, const QString &connName, const QString &hostName, const int port, const QString &databaseName, const QString &userName, const QString &password)
+bool QPSqlConnection::connectToNameDB(const QString &driver, const QString &connName, const QString &hostName, const int port, const QString &databaseName, const QString &userName, const QString &password)
 {
     QSqlDatabase db = QSqlDatabase::addDatabase(driver,connName);
     db.setHostName(hostName);
@@ -61,24 +93,50 @@ QSqlDatabase QPSqlConnection::getDefaultDB()
     return QSqlDatabase::database();
 }
 
-QSqlDatabase QPSqlConnection::getDBbyName(const QString &connName)
+QSqlDatabase QPSqlConnection::getNameDB(const QString &connName)
 {
     return QSqlDatabase::database(connName);
 }
 
-void QPSqlConnection::closeDefaultDB()
+bool QPSqlConnection::openDefaultDB()
 {
-    QSqlDatabase db = getDefaultDB();
-    QString dbName = db.connectionName();
-    db.close();
-    db.removeDatabase(dbName);
-
+    QSqlDatabase db = QSqlDatabase::database();
+    return db.isOpen();
 }
 
-void QPSqlConnection::clseDBbyName(const QString &connName)
+bool QPSqlConnection::openNameDB(const QString &connName)
 {
-    QSqlDatabase db = getDBbyName(connName);
+    QSqlDatabase db = QSqlDatabase::database("connName");
+    return db.isOpen();
+}
+
+bool QPSqlConnection::closeDefaultDB()
+{
+    QSqlDatabase db = QSqlDatabase::database();
     db.close();
-    db.removeDatabase(connName);
+    return db.isOpen();
+}
+
+bool QPSqlConnection::closeNameDB(const QString &connName)
+{
+    QSqlDatabase db = QSqlDatabase::database(connName);
+    db.close();
+    return db.isOpen();
+}
+
+bool QPSqlConnection::destroyDefaultDB()
+{
+    QSqlDatabase db = QSqlDatabase::database();
+    db.close();
+    QSqlDatabase::removeDatabase(db.connectionName());
+    return db.isValid();
+}
+
+bool QPSqlConnection::destroyNameDB(const QString &connName)
+{
+    QSqlDatabase db = QSqlDatabase::database(connName);
+    db.close();
+    QSqlDatabase::removeDatabase(connName);
+    return db.isValid();
 }
 

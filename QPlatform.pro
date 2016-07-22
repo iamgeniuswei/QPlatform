@@ -4,14 +4,15 @@ TRANSLATIONS += resource/lang/software.ts
 
 SUBDIRS += \
     MainApp \
-    QPErrorHandle
+    QPErrorHandle \
+    QPublicSqlHelper
 #    QPUIControl \
 #    QPMainFrame \
 #    QPMessageBox \
 #    QPCharts \
 #    QPTopology \
 #    QPUIPageControl \
-#    QPublicSqlHelper \
+#     \
 #    QPrivateSqlHelper \
 #    QPRecordModel \
 #    QPErrorHandle \
