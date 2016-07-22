@@ -1,0 +1,328 @@
+/*QWidget{
+qproperty-xRadius:5;
+qproperty-yRadius:5;
+border-width: 10px;
+    border-style: solid;
+    border-color: red;
+    qproperty-borderColor:blue;
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                      stop: 0 #FFFFFF, stop: 1 #BB000000);
+}*/
+
+QGraphicsView{
+border-image:url(:/img/bk1);
+background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+stop: 0 rgb(49,49,49), stop: 0.5 rgb(80,80,80), stop: 1 rgb(49,49,49));
+}
+
+
+QLabel#MTlogo
+{
+    qproperty-pixmap:url(:/img/logo);
+}
+QLabel#MTtext
+{
+    font-family:"方正大标宋简体";
+    qproperty-text:"应用协议综合测试验证系统";
+    color:white;
+    font-size:30px;
+}
+
+QLabel#MTsubtext
+{
+    font-family:"Courier New";
+    qproperty-text:"SIP&XMPP testbed (Build 0.01)";
+    color:lightblue;
+    font-size:14px;
+}
+
+QPUITitle
+{
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 0 rgb(41,41,41), stop: 0.3 rgb(35,35,35), stop: 0.6 rgb(28,28,28),stop: 1 rgb(15,15,15));
+}
+
+QPUIStatusBar
+{
+background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+stop: 0 rgb(15,15,15), stop: 0.3 rgb(10,10,10), stop: 0.6 rgb(6,6,6),stop: 1 rgb(2,2,2));
+}
+
+QPUIWindow
+{
+    background-color:rgb(15,15,15);
+}
+
+/*QPUITitle'qss in QPPopupWindows*/
+
+QPUITitle#popupWindow
+{
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+    stop: 0 rgb(10,87,141, 180), stop: 0.3 rgb(18,44,59, 180), stop: 0.6 rgb(9,18,23, 180),stop: 1 rgb(5,5,5, 180));
+}
+
+
+QTabWidget::pane { /* The tab widget frame */
+    border: none;
+}
+QTabWidget::tab-bar {
+    left: 5px; /* move to the right by 5px */
+}
+
+/* Style the tab using the tab sub-control. Note that
+    it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 rgb(89,89,89), stop: 0.4 rgb(80,80,80),
+                                stop: 0.5 rgb(75,75,75), stop: 1.0 rgb(65,65,65));
+    border: 1px solid rgb(100,100,100);
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+/*    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;*/
+    min-width: 40ex;
+    min-height:6ex;
+    padding: 2px;
+    font-family:"冬青黑体简体中文 W3";
+    color:white;
+    font-size:10px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background: rgb(163, 163, 163);
+}
+
+QTabBar::tab:selected {
+    border-color: #9B9B9B;
+    border-bottom-color: #C2C7CB; /* same as pane color */
+}
+
+QTabBar::tab:!selected {
+    margin-top: 0px; /* make non-selected tabs look smaller */
+}
+
+
+
+QPushButton#closeBtn
+{
+/*    qproperty-iconPath:":/img/close";*/
+/*    border: none;*/
+}
+QPushButton#closeBtn:hover
+{
+/*    qproperty-iconPath:":/img/close";*/
+    background-color:red;
+}
+
+QLabel#msgLogo
+{
+    qproperty-pixmap:url(:/img/logo);
+}
+QLabel#msgText
+{
+    qproperty-text:"Test Software";
+    color:red;
+    font-size:32px;
+}
+
+
+QLabel#msgBoxIcon
+{
+
+}
+
+QLabel#SBVersionLabel
+{
+    qproperty-text:"版权所有© 2016 306, Inc.";
+    font-family:"冬青黑体简体中文 W3";
+    color:white;
+}
+QLabel#SBLogoLabel
+{
+    qproperty-pixmap:url(:/img/close);
+}
+
+
+QComboBox::drop-down {
+  subcontrol-origin: padding;
+  subcontrol-position: top right;
+  width: 20px;
+
+  border-left-width: 1px;
+  border-left-color: darkgray;
+  border-left-style: solid; /* just a single line */
+  border-top-right-radius: 3px; /* same radius as the QComboBox */
+  border-bottom-right-radius: 3px;
+}
+
+/*QLineEdit{
+    border-radius:59px;
+    font-size:22px;
+}*/
+
+QLabel#staticalType
+{
+    font-family:"冬青黑体简体中文 W3";
+    qproperty-text:"服务器";
+    color:white;
+    font-size:30px;
+}
+
+QLabel#staticalData
+{
+    font-family:"冬青黑体简体中文 W3";
+    color:white;
+    font-size:50px;
+}
+
+QPUIView#staticalLabel
+{
+    background-color:rgb(42, 161, 219);
+}
+
+QPUIView#staticalLabelTest
+{
+    background-color:transparent;
+}
+
+
+QLabel#assetSummary
+{
+    font-family:"冬青黑体简体中文 W3";
+    qproperty-text:"资产概要";
+    color:white;
+    font-size:40px;
+}
+
+QPUIView#assetView
+{
+    background-color:rgb(29, 29, 29);
+}
+
+QPushButton#firstBtn
+{
+    qproperty-iconPath:url(:/img/first);
+    qproperty-toolTip:"首页";
+}
+
+QPushButton#prevBtn
+{
+    qproperty-iconPath:url(:/img/prev);
+    qproperty-toolTip:"上一页";
+}
+
+QPushButton#nextBtn
+{
+    qproperty-iconPath:url(:/img/next);
+    qproperty-toolTip:"下一页";
+}
+
+QPushButton#lastBtn
+{
+    qproperty-iconPath:url(:/img/last);
+    qproperty-toolTip:"末页";
+}
+
+
+QLabel#UIPageControlLabel
+{
+    font-family:"冬青黑体简体中文 W3";
+    color:white;
+    font-size:20px;
+}
+QLineEdit#UIPageControlLineEdit
+{
+    font-family:"冬青黑体简体中文 W3";
+    font-size:20px;
+    border:none;
+    width:80px;
+}
+
+QPUIPageControlToolBar
+{
+    background-color:rgb(29, 29, 29);
+}
+
+QHeaderView
+{
+    font-family:"冬青黑体简体中文 W3";
+    background-color:rgb(35, 135, 185);
+    border:none;
+}
+QHeaderView::section
+{
+    height:23px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+    stop:0 rgb(37, 137, 187), stop: 0.5 rgb(42, 161, 219),stop:1 rgb(37, 137, 187));
+    color:white;
+    padding-left: 4px;
+    border: 1px solid rgb(42, 161, 219);
+}
+
+QTableView
+{
+    font-family:"冬青黑体简体中文 W3";
+    color:white;
+    font-size:14px;
+    background-color:rgb(29, 29, 29);
+    border:none;
+    alternate-background-color:rgb(50,50,50);
+    height:20px;
+    gridline-color:rgb(15, 15, 15);
+}
+
+QTableView::item
+{
+    height:20px;
+}
+
+QScrollBar:horizontal
+{
+    background-color:rgb(29, 29, 29);
+}
+
+QPUIPageControl{
+    background-color:rgb(29, 29, 29);
+}
+
+QLabel#headerLabel
+{
+    background-color:rgb(42, 161, 219);
+    font-family:"冬青黑体简体中文 W3";
+    color:white;
+    font-size:40px;
+    qproperty-text:"设备详情";
+}
+
+QPUIAssetSummaryLabel#assetSummary
+{
+/*    background-color:rgb(51, 51, 51);*/
+}
+
+QLabel#assetType
+{
+    font-family:"冬青黑体简体中文 W3";
+    color:rgb(40, 161, 230);
+    font-size:16px;
+}
+QLabel#assetName
+{
+    font-family:"冬青黑体简体中文 W3";
+    color:white;
+    font-size:18px;
+}
+QLabel#assetAttr
+{
+    font-family:"冬青黑体简体中文 W3";
+    color:white;
+    font-size:15px;
+}
+
+QLabel#nodeTL
+{
+    qproperty-pixmap:url(:/img/nodeattr);
+}
+
+QPUIWidget
+{
+    background-color:rgb(51, 51, 51, 180);
+}

@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/lang">
+        <file alias="lang_zh">lang/software.qm</file>
+    </qresource>
+    <qresource prefix="/qss">
+        <file alias="version1">qss/version1.qss</file>
+    </qresource>
+    <qresource prefix="/img">
+        <file alias="test">img/54.png</file>
+        <file alias="astrotime">img/astrotime.png</file>
+        <file alias="close">img/close.png</file>
+        <file alias="logo">img/logo.png</file>
+        <file alias="sbbk">img/sbbkimg.png</file>
+        <file>img/textfield.png</file>
+        <file alias="bk1">img/1.png</file>
+        <file alias="bk">img/2.png</file>
+        <file alias="first">img/first.png</file>
+        <file alias="prev">img/prev.png</file>
+        <file alias="last">img/last.png</file>
+        <file alias="next">img/next.png</file>
+        <file alias="nodeattr">img/nodeattr.png</file>
+    </qresource>
+</RCC>
