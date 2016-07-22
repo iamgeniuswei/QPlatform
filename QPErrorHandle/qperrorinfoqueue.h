@@ -11,6 +11,7 @@ class ERRORHANDLESHARED_EXPORT QPErrorInfoQueue
 {
 private:
     QPErrorInfoQueue();
+    ~QPErrorInfoQueue();
     QPErrorInfoQueue(const QPErrorInfoQueue&);
     QPErrorInfoQueue& operator =(const QPErrorInfoQueue&);
     static QPErrorInfoQueue *_instance;
@@ -21,8 +22,7 @@ private:
         ~GarbageCollection()
         {
             if(_instance != nullptr)
-            {
-                qDebug() << "test";
+            {                
                 delete _instance;
                 _instance = nullptr;
             }
@@ -37,10 +37,11 @@ private:
 public:
     static QPErrorInfoQueue *getInstance();
 public:
-   void addErrorInfo(const QPErrorInfo &value);
-   void addErrorInfo(const int errNo, const QString& errMsg);
+   void addErrorInfo(QPErrorInfo *value);
+   void addErrorInfo(int errNo, const QString& errMsg);
    void cleanErrorInfoQueue();
-   QPErrorInfo getLastError();
+   QPErrorInfo *getLastError();
+   int getErrorCount() const;
 
 private:
    QPErrorInfoQueuePrivate *const d_ptr;

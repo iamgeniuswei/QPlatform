@@ -13,7 +13,7 @@ public:
         :q_ptr(parent)
     {}
 public:
-    QStack<QPErrorInfo> _errorInfoQueue;
+    QStack<QPErrorInfo *> _errorInfoQueue;
 private:
     QPErrorInfoQueue *const q_ptr;
 };

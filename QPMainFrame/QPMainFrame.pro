@@ -33,17 +33,4 @@ else:unix: LIBS += -L$$OUT_PWD/../QPUIControl/ -lQPUIControl
 
 INCLUDEPATH += $$PWD/../QPUIControl
 DEPENDPATH += $$PWD/../QPUIControl
-
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../QPNetworkAssets/release/ -lQPNetworkAssets
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../QPNetworkAssets/debug/ -lQPNetworkAssets
-else:unix: LIBS += -L$$OUT_PWD/../QPNetworkAssets/ -lQPNetworkAssets
-
-INCLUDEPATH += $$PWD/../QPNetworkAssets
-DEPENDPATH += $$PWD/../QPNetworkAssets
-
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../QPSIPTest/release/ -lQPSIPTest
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../QPSIPTest/debug/ -lQPSIPTest
-else:unix: LIBS += -L$$OUT_PWD/../QPSIPTest/ -lQPSIPTest
-
-INCLUDEPATH += $$PWD/../QPSIPTest
-DEPENDPATH += $$PWD/../QPSIPTest
+\

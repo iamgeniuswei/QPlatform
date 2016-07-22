@@ -1,6 +1,5 @@
 #include "form.h"
 #include "ui_form.h"
-#include "qprangeroomxmlparser.h"
 Form::Form(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Form)
@@ -15,6 +14,5 @@ Form::~Form()
 
 void Form::on_pushButton_clicked()
 {
-    QPRangeRoomDeserialize *parser = new QPRangeRoomDeserialize;
-    parser->deSerialize();
+
 }

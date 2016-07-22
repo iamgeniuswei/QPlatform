@@ -19,7 +19,6 @@ public:
 
 private:
     QPErrorInfoPrivate * d_ptr;
-
 };
 
 #endif // ERRORINFO_H

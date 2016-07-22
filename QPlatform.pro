@@ -4,17 +4,16 @@ TRANSLATIONS += resource/lang/software.ts
 
 SUBDIRS += \
     MainApp \
-    QPUIControl \
-    QPMainFrame \
-    QPMessageBox \
-    QPCharts \
-    QPTopology \
-    QPNetworkAssets \
-    QPUIPageControl \
-    QPublicSqlHelper \
-    QPrivateSqlHelper \
-    QPRecordModel \
-    QPErrorHandle \
-    QPNetworkTopology \
-    QPXMLHelper \
-    QPSIPTest
+    QPErrorHandle
+#    QPUIControl \
+#    QPMainFrame \
+#    QPMessageBox \
+#    QPCharts \
+#    QPTopology \
+#    QPUIPageControl \
+#    QPublicSqlHelper \
+#    QPrivateSqlHelper \
+#    QPRecordModel \
+#    QPErrorHandle \
+#    QPNetworkTopology \
+#    QPXMLHelper
