@@ -57,12 +57,6 @@ bool QPSqlConnection::connectToDefaultDB(const QString &driver, const QString &h
         return true;
     else
     {
-
-        QPErrorInfo *info;
-        info->setErrorNo(SqlError::errNo_ConneciontError);
-        info->setErrorMsg(db.lastError().text());
-        QPErrorInfoQueue *queue = QPErrorInfoQueue::getInstance();
-        queue->addErrorInfo(info);
         return false;
     }
 }
@@ -79,11 +73,6 @@ bool QPSqlConnection::connectToNameDB(const QString &driver, const QString &conn
         return true;
     else
     {
-        QPErrorInfo info;
-        info.setErrorNo(SqlError::errNo_ConneciontError);
-        info.setErrorMsg(db.lastError().text());
-        QPErrorInfoQueue *queue = QPErrorInfoQueue::getInstance();
-        queue->addErrorInfo(info);
         return false;
     }
 }
@@ -106,7 +95,7 @@ bool QPSqlConnection::openDefaultDB()
 
 bool QPSqlConnection::openNameDB(const QString &connName)
 {
-    QSqlDatabase db = QSqlDatabase::database("connName");
+    QSqlDatabase db = QSqlDatabase::database(connName);
     return db.isOpen();
 }
 
@@ -114,14 +103,14 @@ bool QPSqlConnection::closeDefaultDB()
 {
     QSqlDatabase db = QSqlDatabase::database();
     db.close();
-    return db.isOpen();
+    return !db.isOpen();
 }
 
 bool QPSqlConnection::closeNameDB(const QString &connName)
 {
     QSqlDatabase db = QSqlDatabase::database(connName);
     db.close();
-    return db.isOpen();
+    return !db.isOpen();
 }
 
 bool QPSqlConnection::destroyDefaultDB()
@@ -129,7 +118,7 @@ bool QPSqlConnection::destroyDefaultDB()
     QSqlDatabase db = QSqlDatabase::database();
     db.close();
     QSqlDatabase::removeDatabase(db.connectionName());
-    return db.isValid();
+    return !db.isValid();
 }
 
 bool QPSqlConnection::destroyNameDB(const QString &connName)
@@ -137,6 +126,18 @@ bool QPSqlConnection::destroyNameDB(const QString &connName)
     QSqlDatabase db = QSqlDatabase::database(connName);
     db.close();
     QSqlDatabase::removeDatabase(connName);
-    return db.isValid();
+    return !db.isValid();
+}
+
+void QPSqlConnection::setError(int errNo, const QString &errMsg)
+{
+    QPErrorInfo *info = new (std::nothrow) QPErrorInfo;
+    if(info)
+    {
+        info->setErrorNo(errNo);
+        info->setErrorMsg(errMsg);
+        QPErrorInfoQueue *queue = QPErrorInfoQueue::getInstance();
+        queue->addErrorInfo(info);
+    }
 }
 

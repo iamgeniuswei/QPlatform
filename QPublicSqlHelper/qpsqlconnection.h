@@ -51,8 +51,8 @@ public:
                                  const QString& databaseName,\
                                  const QString& userName,\
                                  const QString& password);
-    QSqlDatabase getDefaultDB();
-    QSqlDatabase getNameDB(const QString& connName);
+    static QSqlDatabase getDefaultDB();
+    static QSqlDatabase getNameDB(const QString& connName);
 
     bool openDefaultDB();
     bool openNameDB(const QString &connName);
@@ -62,6 +62,9 @@ public:
 
     bool destroyDefaultDB();
     bool destroyNameDB(const QString &connName);
+
+private:
+    void setError(int errNo, const QString& errMsg);
 private:
     QPSqlConnectionPrivate * d_ptr;
     Q_DECLARE_PRIVATE(QPSqlConnection)

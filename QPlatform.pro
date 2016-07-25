@@ -5,7 +5,8 @@ TRANSLATIONS += resource/lang/software.ts
 SUBDIRS += \
     MainApp \
     QPErrorHandle \
-    QPublicSqlHelper
+    QPublicSqlHelper \
+    TestApp
 #    QPUIControl \
 #    QPMainFrame \
 #    QPMessageBox \

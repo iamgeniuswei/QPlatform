@@ -33,3 +33,10 @@ else:unix: LIBS += -L$$OUT_PWD/../QPErrorHandle/ -lQPErrorHandle
 
 INCLUDEPATH += $$PWD/../QPErrorHandle
 DEPENDPATH += $$PWD/../QPErrorHandle
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../QPublicSqlHelper/release/ -lQPublicSqlHelper
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../QPublicSqlHelper/debug/ -lQPublicSqlHelper
+else:unix: LIBS += -L$$OUT_PWD/../QPublicSqlHelper/ -lQPublicSqlHelper
+
+INCLUDEPATH += $$PWD/../QPublicSqlHelper
+DEPENDPATH += $$PWD/../QPublicSqlHelper

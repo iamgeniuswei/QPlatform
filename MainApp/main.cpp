@@ -7,6 +7,8 @@
 #include "qperrorinfo.h"
 #include <QDebug>
 #include <QtDebug>
+#include "qpsqlconnection.h"
+#include <sys/time.h>
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +16,7 @@ int main(int argc, char *argv[])
 
 //    QPrivateSqlHelper::createObject();
 //    QPrivateSqlHelper::createModelObject();
-//    QPSqlConnection *conn = new QPSqlConnection;
+    QPSqlConnection *conn = QPSqlConnection::getInstance();
 ////    qDebug() << conn->ConnectionToDBByName("",\
 ////                               "TaskDB",\
 ////                               "192.168.1.201",\
@@ -22,12 +24,27 @@ int main(int argc, char *argv[])
 ////                               "ORCL",\
 ////                               "ronaldo",\
 ////                               "qhtf20150622");
-//    qDebug() << conn->ConnectionToDBByDefault("QOCI",\
-//                               "192.168.1.226",\
-//                               1521,\
-//                               "ORCL",\
-//                               "XYFX2",\
-//                               "123456");
+    qDebug() << conn->connectToDefaultDB("QPSQL",\
+                               "127.0.0.1",\
+                               5432,\
+                               "ATCCSDB",\
+                               "lenovo",\
+                               "123456");
+    qDebug() << conn->closeDefaultDB();
+    qDebug() << conn->openDefaultDB();
+
+    timeval tv;
+    gettimeofday(&tv, NULL);
+
+    for(int i=0; i<10000; i++)
+    {
+
+    }
+
+
+
+
+
 //    delete conn;
 
 
@@ -51,30 +68,30 @@ int main(int argc, char *argv[])
     Form w;
     w.show();
 
-    qDebug() << queue->getErrorCount();
-    queue->addErrorInfo(100, "121212");
-    qDebug() << queue->getErrorCount();
+//    qDebug() << queue->getErrorCount();
+//    queue->addErrorInfo(100, "121212");
+//    qDebug() << queue->getErrorCount();
 
-    queue->addErrorInfo(200, "dfadfafa");
-    qDebug() << queue->getErrorCount();
+//    queue->addErrorInfo(200, "dfadfafa");
+//    qDebug() << queue->getErrorCount();
 
-    QPErrorInfo *info1 = new QPErrorInfo(300, "dfdfas");
-    queue->addErrorInfo(info1);
-    qDebug() << queue->getErrorCount();
+//    QPErrorInfo *info1 = new QPErrorInfo(300, "dfdfas");
+//    queue->addErrorInfo(info1);
+//    qDebug() << queue->getErrorCount();
 
-    QPErrorInfo *info = queue->getLastError();
-    if(info)
-        qDebug() << info->errorNo() << info->errorMsg();
-    qDebug() << queue->getErrorCount();
+//    QPErrorInfo *info = queue->getLastError();
+//    if(info)
+//        qDebug() << info->errorNo() << info->errorMsg();
+//    qDebug() << queue->getErrorCount();
 
-    info = queue->getLastError();
-    if(info)
-        qDebug() << info->errorNo() << info->errorMsg();
-    qDebug() << queue->getErrorCount();
-    info = queue->getLastError();
-    if(info)
-        qDebug() << info->errorNo() << info->errorMsg();
-    qDebug() << queue->getErrorCount();
+//    info = queue->getLastError();
+//    if(info)
+//        qDebug() << info->errorNo() << info->errorMsg();
+//    qDebug() << queue->getErrorCount();
+//    info = queue->getLastError();
+//    if(info)
+//        qDebug() << info->errorNo() << info->errorMsg();
+//    qDebug() << queue->getErrorCount();
 
     return a.exec();
 }
