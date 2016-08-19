@@ -43,7 +43,6 @@ protected:
 private:
     QPUIWidgetPrivate *const d_ptr;
     Q_DECLARE_PRIVATE(QPUIWidget)
-
 };
 
 #endif // QPUIWIDGET_H

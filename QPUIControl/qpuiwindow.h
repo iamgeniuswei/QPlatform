@@ -4,7 +4,7 @@
 #include "qpuiwidget.h"
 #include "qpuicontrol_global.h"
 class QPUIWindowPrivate;
-class QPUITitle;
+class QPUITitleBar;
 class QPUINavigationBar;
 class QPUIStatusBar;
 class QPUICONTROLSHARED_EXPORT QPUIWindow : public QPUIWidget
@@ -12,7 +12,7 @@ class QPUICONTROLSHARED_EXPORT QPUIWindow : public QPUIWidget
     Q_OBJECT
 public:
     explicit QPUIWindow(QWidget *parent = 0);
-    void addTitle(QPUITitle *title);
+    void addTitle(QPUITitleBar *title);
     void addNavigationBar(QPUINavigationBar *navigationBar);
     void addContentArea(QWidget *contentArea);
     void addStatusBar(QPUIStatusBar *statusBar);

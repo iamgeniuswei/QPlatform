@@ -1,110 +1,111 @@
-#include "qpuititle.h"
-#include "private/qpuititle_p.h"
+#include "qpuititlebar.h"
+#include "private/qpuititlebar_p.h"
 #include <QGridLayout>
 #include <QMouseEvent>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
-QPUITitle::QPUITitle(QWidget *parent) : QPUIWidget(parent),d_ptr(new QPUITitlePrivate(this))
+QPUITitleBar::QPUITitleBar(QWidget *parent) : QPUIWidget(parent),d_ptr(new QPUITitleBarPrivate(this))
 {
-    Q_D(QPUITitle);
+    Q_D(QPUITitleBar);
+    setMinimumHeight(48);
     d->init();
 }
 
-void QPUITitle::addTitleLogo(QLabel *logo)
+void QPUITitleBar::addTitleLogo(QLabel *logo)
 {
-    Q_D(QPUITitle);
+    Q_D(QPUITitleBar);
     if(logo && d->mainLayout)
     {
         d->mainLayout->addWidget(logo, 0, 1, 3, 1, Qt::AlignVCenter);
     }
 }
 
-void QPUITitle::addTitleText(QWidget *text)
+void QPUITitleBar::addTitleText(QWidget *text)
 {
-    Q_D(QPUITitle);
+    Q_D(QPUITitleBar);
     if(text && d->mainLayout)
     {
         d->mainLayout->addWidget(text, 0, 2, 3, 1, Qt::AlignVCenter);
     }
 }
 
-void QPUITitle::addSubTitleText(QLabel *text)
+void QPUITitleBar::addSubTitleText(QLabel *text)
 {
-    Q_D(QPUITitle);
+    Q_D(QPUITitleBar);
     if(text && d->mainLayout)
     {
         d->mainLayout->addWidget(text, 2, 3, 1, 1, Qt::AlignTop);
     }
 }
 
-void QPUITitle::addSysBtn(QPushButton *sysBtn)
+void QPUITitleBar::addSysBtn(QPushButton *sysBtn)
 {
-    Q_D(QPUITitle);
+    Q_D(QPUITitleBar);
     if(sysBtn)
     {
-        if(d->sysBtnLayout)
+        if(d->systemLayout)
         {
-            d->sysBtnLayout->addWidget(sysBtn);
+            d->systemLayout->addWidget(sysBtn);
         }
         else
         {
-            d->sysBtnLayout = new QHBoxLayout;
-            if(d->sysBtnLayout)
-                d->sysBtnLayout->addWidget(sysBtn);
+            d->systemLayout = new QHBoxLayout;
+            if(d->systemLayout)
+                d->systemLayout->addWidget(sysBtn);
         }
     }
 }
 
-void QPUITitle::addUserBtn(QWidget *userBtn)
+void QPUITitleBar::addCustomBtn(QWidget *customBtn)
 {
-    Q_D(QPUITitle);
-    if(userBtn)
+    Q_D(QPUITitleBar);
+    if(customBtn)
     {
-        if(d->userBtnLayout)
-            {
-            d->userBtnLayout->addWidget(userBtn, 0, Qt::AlignVCenter|Qt::AlignCenter);
+        if(d->customLayout)
+        {
+            d->customLayout->addWidget(customBtn, 0, Qt::AlignVCenter|Qt::AlignCenter);
         }
         else
+        {
+            d->customLayout = new QHBoxLayout;
+            if(d->customLayout)
             {
-            d->userBtnLayout = new QHBoxLayout;
-            if(d->userBtnLayout)
-            {
-                d->userBtnLayout->setMargin(0);
-                d->userBtnLayout->addWidget(userBtn, 0, Qt::AlignVCenter|Qt::AlignCenter);
+                d->customLayout->setMargin(0);
+                d->customLayout->addWidget(customBtn, 0, Qt::AlignVCenter|Qt::AlignCenter);
             }
         }
     }
 }
 
-void QPUITitle::setParent(QWidget *parent)
+void QPUITitleBar::setParent(QWidget *parent)
 {
-    Q_D(QPUITitle);
+    Q_D(QPUITitleBar);
     d->parentWindow = parent;
     //TODO: setParent
 //    QWidget::setParent(parent);
 }
 
-void QPUITitle::initilizeUI()
+void QPUITitleBar::initilizeUI()
 {
-    Q_D(QPUITitle);
+    Q_D(QPUITitleBar);
     if(d->mainLayout)
     {
-        if(d->userBtnLayout)
+        if(d->customLayout)
         {
-            d->mainLayout->addLayout(d->userBtnLayout, 1, 5, 2, 1, Qt::AlignBottom);
+            d->mainLayout->addLayout(d->customLayout, 1, 5, 2, 1, Qt::AlignBottom);
         }
-        if(d->sysBtnLayout)
+        if(d->systemLayout)
         {
-            d->mainLayout->addLayout(d->sysBtnLayout, 0, 7, 1, 1);
+            d->mainLayout->addLayout(d->systemLayout, 0, 7, 1, 1);
         }
         setLayout(d->mainLayout);
     }
 }
 
-void QPUITitle::mousePressEvent(QMouseEvent *event)
+void QPUITitleBar::mousePressEvent(QMouseEvent *event)
 {
-    Q_D(QPUITitle);
+    Q_D(QPUITitleBar);
     if(event->button() == Qt::LeftButton)
     {
         d->mousePress = true;
@@ -112,9 +113,9 @@ void QPUITitle::mousePressEvent(QMouseEvent *event)
     d->moveDistance = event->globalPos() - pos();
 }
 
-void QPUITitle::mouseMoveEvent(QMouseEvent *event)
+void QPUITitleBar::mouseMoveEvent(QMouseEvent *event)
 {
-    Q_D(QPUITitle);
+    Q_D(QPUITitleBar);
     if(d->mousePress  && d->windowMove)
     {
         QPoint movePos = event->globalPos();
@@ -128,15 +129,14 @@ void QPUITitle::mouseMoveEvent(QMouseEvent *event)
     }
 }
 
-void QPUITitle::mouseReleaseEvent(QMouseEvent *)
+void QPUITitleBar::mouseReleaseEvent(QMouseEvent *)
 {
-    Q_D(QPUITitle);
+    Q_D(QPUITitleBar);
     d->mousePress = false;
 }
 
 
-
-void QPUITitlePrivate::init()
+void QPUITitleBarPrivate::init()
 {
     mainLayout = new QGridLayout(q_ptr);
     if(mainLayout)

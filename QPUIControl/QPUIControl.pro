@@ -13,9 +13,6 @@ DEFINES += QPUICONTROL_LIBRARY
 
 SOURCES += qpuicontrol.cpp \
     qpuiwidget.cpp \
-    qpuititle.cpp \
-    qpuititlebuilder.cpp \
-    qpuititledirector.cpp \
     qpuinavigationbar.cpp \
     qpuistatusbar.cpp \
     qpuiwindow.cpp \
@@ -30,16 +27,15 @@ SOURCES += qpuicontrol.cpp \
     qpuiviewbuilder.cpp \
     qpuistaticallabelbuilder.cpp \
     qpuistaticallabel.cpp \
-    qpuiassetsummarylabel.cpp
+    qpuiassetsummarylabel.cpp \
+    qpuititlebar.cpp \
+    qpuititlebarbuilder.cpp \
+    qpuititlebardirector.cpp
 
 HEADERS += qpuicontrol.h\
         qpuicontrol_global.h \
     qpuiwidget.h \
     private/qpuiwidget_p.h \
-    qpuititle.h \
-    private/qpuititle_p.h \
-    qpuititlebuilder.h \
-    qpuititledirector.h \
     qpuinavigationbar.h \
     qpuistatusbar.h \
     qpuiwindow.h \
@@ -62,7 +58,11 @@ HEADERS += qpuicontrol.h\
     qpuistaticallabel.h \
     private/qpuistaticallabel_p.h \
     qpuiassetsummarylabel.h \
-    private/qpuiassetsummarylabel_p.h
+    private/qpuiassetsummarylabel_p.h \
+    private/qpuititlebar_p.h \
+    qpuititlebar.h \
+    qpuititlebarbuilder.h \
+    qpuititlebardirector.h
 
 unix {
     target.path = /usr/lib

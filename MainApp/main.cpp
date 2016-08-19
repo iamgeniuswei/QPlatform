@@ -10,6 +10,21 @@
 #include "qpsqlconnection.h"
 #include <sys/time.h>
 
+
+//test
+#include <QLabel>
+#include "qpuititlebar.h"
+#include <QScopedPointer>
+#include <QPushButton>
+#include "qpuiiconbutton.h"
+#include <QListWidget>
+#include <QListWidgetItem>
+
+#include "testform.h"
+#include "testscorllarea.h"
+#include "testwidget.h"
+#include "qpuitimelinelist.h"
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -64,9 +79,103 @@ int main(int argc, char *argv[])
 
 
     QPErrorInfoQueue *queue = QPErrorInfoQueue::getInstance();
+    QPUITimeLineList *list = new QPUITimeLineList;
+    list->show();
 
-    Form w;
-    w.show();
+//    TestScorllArea *scroll = new TestScorllArea;
+//    scroll->show();
+
+//    TestWidget *w = new TestWidget;
+//    TestWidget *w2 = new TestWidget;
+//    TestWidget *w3 = new TestWidget;
+////    w->show();
+
+
+
+//    TestForm *form = new TestForm;
+//    TestForm *form2 = new TestForm;
+//    TestForm *form3 = new TestForm;
+
+//    QListWidget *list = new QListWidget;
+//    QListWidgetItem *item1 = new QListWidgetItem(list);
+
+//    item1->setSizeHint(QSize(200,48));
+//    QListWidgetItem *item2 = new QListWidgetItem(list);
+//    item2->setSizeHint(QSize(200,48));
+//    QListWidgetItem *item3 = new QListWidgetItem(list);
+//    item3->setSizeHint(QSize(200,48));
+
+//    list->setItemWidget(item1, w);
+//    list->setItemWidget(item2, w2);
+//    list->setItemWidget(item3, w3);
+//    list->setFixedWidth(220);
+//    list->setAutoScroll(false);
+//    list->setSelectionRectVisible(false);
+//    list->setCursor(Qt::PointingHandCursor);
+//    list->show();
+//    QScopedPointer<QPUIIconButton> btn(new QPUIIconButton);
+//    btn->setObjectName("firstBtn");
+//    btn->show();
+
+//        QPUITitleBar *titleBar = new QPUITitleBar;
+
+//        QLabel *logo = nullptr;
+//        logo = new QLabel(titleBar);
+//        if(logo)
+//        {
+//            logo->setObjectName("MTlogo");
+//            titleBar->addTitleLogo(logo);
+//        }
+//        QLabel *text = nullptr;
+//        text = new QLabel(titleBar);
+//        if(text)
+//        {
+//            text->setObjectName("MTtext");
+//            titleBar->addTitleText(text);
+//        }
+
+//        QLabel *subtext = nullptr;
+//        subtext = new QLabel(titleBar);
+//        if(subtext && titleBar)
+//        {
+//            subtext->setObjectName("MTsubtext");
+//            titleBar->addSubTitleText(subtext);
+//        }
+
+//        QPUIIconButton *btn1 = new QPUIIconButton();
+//        btn1->setObjectName("test160");
+//    //    btn1->show();
+//        titleBar->addCustomBtn(btn1);
+//        QPUIIconButton *btn2 = new QPUIIconButton();
+//        btn2->setObjectName("test160");
+//    //    btn1->show();
+//        titleBar->addCustomBtn(btn2);
+//        QPUIIconButton *btn3 = new QPUIIconButton();
+//        btn3->setObjectName("test160");
+//    //    btn1->show();
+//        titleBar->addCustomBtn(btn3);
+
+//        titleBar->initilizeUI();
+
+
+//    //    titleBar->show();
+
+
+//    QListWidget *list = new QListWidget;
+//    QPushButton *btn = new QPushButton("dfafaf");
+//    QListWidgetItem *item = new QListWidgetItem(list);
+//    list->setItemWidget(item, btn);
+
+////    QListWidget *list = new QListWidget;
+//    QListWidgetItem *item1 = new QListWidgetItem(list);
+//    list->setItemWidget(item1, titleBar);
+//    list->show();
+
+
+
+
+//    Form w;
+//    w.show();
 
 //    qDebug() << queue->getErrorCount();
 //    queue->addErrorInfo(100, "121212");

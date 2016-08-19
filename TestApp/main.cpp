@@ -30,12 +30,25 @@ int main(int argc, char *argv[])
     gettimeofday(&tv, NULL);
     printf("%d:%d\n", tv.tv_sec, tv.tv_usec);
     QSqlQuery query;
+    query.prepare("INSERT INTO swiveltable(name, description) "
+                  "VALUES(:name, :description)");
 
-    for(int i=0; i<10000; i++)
+    for(int i=0; i<100000; i++)
     {
-        query.exec("INSERT INTO swiveltablestatus (name, description) VALUES ('test', 'test')");
+        query.bindValue(":name", "test");
+        query.bindValue(":description", "test");
+        query.exec();
     }
-    gettimeofday(&tv, NULL);
-    printf("%d:%d\n", tv.tv_sec, tv.tv_usec);
+//    qDebug() << query.exec();
+//    for(int i=0; i<10000; i++)
+//    {
+//        query.exec("INSERT INTO swiveltablestatus (name, description) VALUES ('test', 'test')");
+//    }
+//    query.exec("SELECT * FROM swiveltablestatus");
+//    printf("%d\n", query.size());
+    timeval tv1;
+    gettimeofday(&tv1, NULL);
+    printf("%d:%d\n", tv1.tv_sec, tv1.tv_usec);
+    printf("%d:%d\n", tv1.tv_sec-tv.tv_sec, tv1.tv_usec-tv.tv_usec);
     return a.exec();
 }

@@ -6,8 +6,8 @@ SUBDIRS += \
     MainApp \
     QPErrorHandle \
     QPublicSqlHelper \
-    TestApp
-#    QPUIControl \
+    TestApp \
+    QPUIControl \
 #    QPMainFrame \
 #    QPMessageBox \
 #    QPCharts \

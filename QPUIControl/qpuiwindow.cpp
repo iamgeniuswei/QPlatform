@@ -2,7 +2,7 @@
 #include "private/qpuiwindow_p.h"
 #include <QGridLayout>
 #include <QSplitter>
-#include "qpuititle.h"
+#include "qpuititlebar.h"
 #include "qpuinavigationbar.h"
 #include "qpuistatusbar.h"
 QPUIWindow::QPUIWindow(QWidget *parent) : QPUIWidget(parent),d_ptr(new QPUIWindowPrivate(this))
@@ -11,7 +11,7 @@ QPUIWindow::QPUIWindow(QWidget *parent) : QPUIWidget(parent),d_ptr(new QPUIWindo
     d->init();
 }
 
-void QPUIWindow::addTitle(QPUITitle *title)
+void QPUIWindow::addTitle(QPUITitleBar *title)
 {
     Q_D(QPUIWindow);
     if(title && d->mainLayout)

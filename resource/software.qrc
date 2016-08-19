@@ -19,5 +19,11 @@
         <file alias="last">img/last.png</file>
         <file alias="next">img/next.png</file>
         <file alias="nodeattr">img/nodeattr.png</file>
+        <file alias="test80">img/test80.png</file>
+        <file alias="test160">img/test160.png</file>
+        <file alias="111">img/111.png</file>
+        <file alias="222">img/222.png</file>
+        <file alias="333">img/333.png</file>
+        <file alias="444">img/444.png</file>
     </qresource>
 </RCC>

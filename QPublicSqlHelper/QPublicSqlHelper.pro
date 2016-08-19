@@ -24,7 +24,8 @@ SOURCES += sqlhelper.cpp \
     qpquerythread.cpp \
     qpnonquerythread.cpp \
     qpquerymodel.cpp \
-    qpdatamodel.cpp
+    qpdatamodel.cpp \
+    qpsqlsqlcommand.cpp
 
 HEADERS += sqlhelper.h\
         sqlhelper_global.h \
@@ -41,7 +42,8 @@ HEADERS += sqlhelper.h\
     qpnonquerythread.h \
     qpquerymodel.h \
     qpdatamodel.h \
-    private/qpsqlconnection_p.h
+    private/qpsqlconnection_p.h \
+    qpsqlsqlcommand.h
 
 unix {
     target.path = /usr/lib

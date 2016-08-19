@@ -15,17 +15,27 @@ TEMPLATE = app
 SOURCES += main.cpp\
         widget.cpp \
     slidingwindow.cpp \
-    form.cpp
+    form.cpp \
+    testform.cpp \
+    testscorllarea.cpp \
+    testwidget.cpp \
+    qpuitimelinelist.cpp
 
 HEADERS  += widget.h \
     slidingwindow.h \
-    form.h
+    form.h \
+    testform.h \
+    testscorllarea.h \
+    testwidget.h \
+    qpuitimelinelist.h
 
 RESOURCES += \
     ../resource/software.qrc
 
 FORMS += \
-    form.ui
+    form.ui \
+    testform.ui \
+    testscorllarea.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../QPErrorHandle/release/ -lQPErrorHandle
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../QPErrorHandle/debug/ -lQPErrorHandle
@@ -40,3 +50,10 @@ else:unix: LIBS += -L$$OUT_PWD/../QPublicSqlHelper/ -lQPublicSqlHelper
 
 INCLUDEPATH += $$PWD/../QPublicSqlHelper
 DEPENDPATH += $$PWD/../QPublicSqlHelper
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../QPUIControl/release/ -lQPUIControl
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../QPUIControl/debug/ -lQPUIControl
+else:unix: LIBS += -L$$OUT_PWD/../QPUIControl/ -lQPUIControl
+
+INCLUDEPATH += $$PWD/../QPUIControl
+DEPENDPATH += $$PWD/../QPUIControl

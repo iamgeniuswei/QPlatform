@@ -127,26 +127,6 @@ public:
     /// \author Geniuswei
     /// \date 2015-06-12
     ///
-//    virtual bool queryPageWithConnection(QueryModel *model, \
-//                           const QString &tableName, \
-//                           const int index, \
-//                           const int step,
-//                           const QString &conditon,\
-//                           const QString &connName) = 0;
-//    virtual bool queryPageWithConnection(QueryModel *model, \
-//                           const QString &tableName, \
-//                           const int index, \
-//                           const int step,
-//                           const QString &connName) = 0;
-//    virtual bool queryPage(QueryModel *model, \
-//                           const QString &tableName, \
-//                           const int index, \
-//                           const int step,
-//                           const QString &conditon) = 0;
-//    virtual bool queryPage(QueryModel *model, \
-//                           const QString &tableName, \
-//                           const int index, \
-//                           const int step) = 0;
     virtual bool queryPage(QPQueryModel *model, \
                            const QString &tableName, \
                            const int index, \

@@ -20,10 +20,16 @@ QLabel#MTlogo
 {
     qproperty-pixmap:url(:/img/logo);
 }
+QLabel#test222
+{
+    qproperty-pixmap:url(:/img/222);
+}
+
+
 QLabel#MTtext
 {
     font-family:"方正大标宋简体";
-    qproperty-text:"应用协议综合测试验证系统";
+    qproperty-text:"ATCCS";
     color:white;
     font-size:30px;
 }
@@ -31,7 +37,7 @@ QLabel#MTtext
 QLabel#MTsubtext
 {
     font-family:"Courier New";
-    qproperty-text:"SIP&XMPP testbed (Build 0.01)";
+    qproperty-text:"(Build 0.01)";
     color:lightblue;
     font-size:14px;
 }
@@ -222,6 +228,18 @@ QPushButton#lastBtn
     qproperty-toolTip:"末页";
 }
 
+QPushButton#lastBtn
+{
+    qproperty-iconPath:url(:/img/last);
+    qproperty-toolTip:"末页";
+}
+
+QPushButton#test160
+{
+    qproperty-iconPath:url(:/img/test80);
+}
+
+
 
 QLabel#UIPageControlLabel
 {
@@ -325,4 +343,8 @@ QLabel#nodeTL
 QPUIWidget
 {
     background-color:rgb(51, 51, 51, 180);
+}
+
+QListWidget::item::selected{
+    background:#FFFFFF;
 }

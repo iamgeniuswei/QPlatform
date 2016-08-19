@@ -5,17 +5,17 @@
 #include "qpuicontrol_global.h"
 class QLabel;
 class QPushButton;
-class QPUITitlePrivate;
-class QPUICONTROLSHARED_EXPORT QPUITitle : public QPUIWidget
+class QPUITitleBarPrivate;
+class QPUICONTROLSHARED_EXPORT QPUITitleBar : public QPUIWidget
 {
     Q_OBJECT
 public:
-    explicit QPUITitle(QWidget *parent = 0);
+    explicit QPUITitleBar(QWidget *parent = 0);
     void addTitleLogo(QLabel *logo);
     void addTitleText(QWidget *text);
     void addSubTitleText(QLabel *text);
     void addSysBtn(QPushButton *sysBtn);
-    void addUserBtn(QWidget *userBtn);
+    void addCustomBtn(QWidget *customBtn);
     void setParent(QWidget *parent);
     void initilizeUI();
 
@@ -28,8 +28,8 @@ signals:
 public slots:
 
 private:
-    QPUITitlePrivate *const d_ptr;
-    Q_DECLARE_PRIVATE(QPUITitle)
+    QPUITitleBarPrivate *const d_ptr;
+    Q_DECLARE_PRIVATE(QPUITitleBar)
 };
 
 #endif // QPUITITLE_H

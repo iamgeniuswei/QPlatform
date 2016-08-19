@@ -3,18 +3,18 @@
 
 #include <QObject>
 #include "qpuicontrol_global.h"
-class QPUITitle;
+class QPUITitleBar;
 
-class QPUICONTROLSHARED_EXPORT QPUITitleBuilder : public QObject
+class QPUICONTROLSHARED_EXPORT QPUITitleBarBuilder : public QObject
 {
     Q_OBJECT
 public:
-    explicit QPUITitleBuilder(QObject *parent = 0);
+    explicit QPUITitleBarBuilder(QObject *parent = 0);
     virtual void buildLogo(){}
     virtual void buildText(){}
     virtual void buildUserBtn(){}
     virtual void buildSysBtn(){}
-    virtual QPUITitle* getTitleInstance()
+    virtual QPUITitleBar* getTitleInstance()
     {
         return nullptr;
     }

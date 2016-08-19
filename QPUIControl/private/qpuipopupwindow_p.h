@@ -3,7 +3,7 @@
 #include <QObject>
 class QPUIPopupWindow;
 class QVBoxLayout;
-class QPUITitle;
+class QPUITitleBar;
 class QWidget;
 class QPUIWidget;
 class QPUIPopupWindowPrivate
@@ -15,7 +15,7 @@ public:
     void init();
 public:
     QVBoxLayout *mainLayout;
-    QPUITitle *title;
+    QPUITitleBar *title;
     QPUIWidget *contentArea;
     QVBoxLayout *contentLayout;
 

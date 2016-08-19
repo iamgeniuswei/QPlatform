@@ -1,3 +1,15 @@
+/*
+ * Modify date: 2016-07-25 15:28
+ * Modify purpose: Add functions
+ * Modify Details:
+ * 1) apply QPSqlConnection to Singleton pattern.
+ * 2) modify close database connection function.
+ * 3) add destroy database connection.
+ * 4) add open database connection.
+ */
+
+
+
 #include "qpsqlconnection.h"
 #include "private/qpsqlconnection_p.h"
 #include <QString>
@@ -7,8 +19,6 @@
 QPSqlConnection *QPSqlConnection::_instance = nullptr;
 QPSqlConnection ::GarbageCollection QPSqlConnection::gc;
 QMutex QPSqlConnection::mutex;
-
-
 
 QPSqlConnection::QPSqlConnection():d_ptr(new QPSqlConnectionPrivate(this))
 {

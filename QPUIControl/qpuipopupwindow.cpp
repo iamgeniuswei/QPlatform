@@ -1,7 +1,7 @@
 #include "qpuipopupwindow.h"
 #include "private/qpuipopupwindow_p.h"
 #include <QVBoxLayout>
-#include "qpuititle.h"
+#include "qpuititlebar.h"
 #include "qpuiwidget.h"
 QPUIPopupWindow::QPUIPopupWindow(QWidget *parent) : QPUIWidget(parent),
     d_ptr(new QPUIPopupWindowPrivate(this))
@@ -11,7 +11,7 @@ QPUIPopupWindow::QPUIPopupWindow(QWidget *parent) : QPUIWidget(parent),
     d->init();
 }
 
-void QPUIPopupWindow::addTitle(QPUITitle *title)
+void QPUIPopupWindow::addTitle(QPUITitleBar *title)
 {
     Q_D(QPUIPopupWindow);
     if(title && d->mainLayout)
@@ -43,7 +43,7 @@ void QPUIPopupWindow::initilizeUI()
     }
 }
 
-QPUITitle *QPUIPopupWindow::getTitle() const
+QPUITitleBar *QPUIPopupWindow::getTitle() const
 {
     Q_D(const QPUIPopupWindow);
     if(d)
@@ -80,7 +80,7 @@ QPUIPopupWindow::QPUIPopupWindow(QPUIPopupWindowPrivate *dd, QWidget *parent):
 void QPUIPopupWindowPrivate::init()
 {
     mainLayout = new QVBoxLayout(q_ptr);
-    title = new (std::nothrow) QPUITitle(q_ptr);
+    title = new (std::nothrow) QPUITitleBar(q_ptr);
     if(title)
     {
         title->setObjectName("popupWindow");
